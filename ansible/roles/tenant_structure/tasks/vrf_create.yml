@@ -1,0 +1,11 @@
+- name: Add a new VRF to a tenant
+  cisco.aci.aci_vrf:
+    host: '{{ ansible_host }}'
+    username: '{{ username }}'
+    password: '{{ password }}'
+    vrf: '{{ item.name }}'
+    tenant: '{{ tenant_item.name }}'
+    validate_certs: no
+    state: present
+  delegate_to: localhost
+  loop: "{{tenant_item.vrf}}"

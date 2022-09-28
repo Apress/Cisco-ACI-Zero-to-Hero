@@ -1,0 +1,13 @@
+---
+##################################################################
+#####    Main playbook for ACI Configuration Management      #####
+##################################################################
+
+- name: PROVISION main TENANT objects 
+  import_playbook: deploy_tenant_structure.yml
+
+- name: PROVISION BDs from CSV
+  import_playbook: deploy_bds.yml
+
+- name: PROVISION EPGs from CSV
+  import_playbook: deploy_epgs.yml

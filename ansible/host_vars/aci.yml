@@ -1,0 +1,24 @@
+ansible_host: 10.17.87.60
+username: admin
+password: cisco123
+
+bd_epg_csv_filename: "ACI_VLAN_BD_EPG.csv"
+
+#ACI Tenant structure
+aci_config:
+  aci_tenant_structure:
+  - name: Apress_Prod
+    state: present
+    vrf:
+    - name: PROD
+    - name: TEST
+    app_profile:
+    - name: WebApp
+    - name: JavaApp
+  - name: Apress_Dev
+    state: present
+    vrf:
+    - name: DEV
+    app_profile:
+    - name: WebApp
+    - name: JavaApp

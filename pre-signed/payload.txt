@@ -1,0 +1,1 @@
+GET/api/node/class/fvTenant.json

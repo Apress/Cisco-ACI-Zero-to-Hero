@@ -1,0 +1,10 @@
+- name: "Add a new tenant {{ tenant_item.name }}"
+  cisco.aci.aci_tenant:
+    host: '{{ ansible_host }}'
+    username: '{{ username }}'
+    password: '{{ password }}'
+    validate_certs: no
+    tenant: "{{ tenant_item.name }}"
+    description: Tenant created by Ansible
+    state: present
+  delegate_to: localhost

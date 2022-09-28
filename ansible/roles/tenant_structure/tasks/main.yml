@@ -1,0 +1,6 @@
+---
+# Every role hast to include a main.yml file.
+#
+- include: tenant_create.yml
+- include: vrf_create.yml
+- include: app_create.yml

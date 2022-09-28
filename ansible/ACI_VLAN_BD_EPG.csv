@@ -1,0 +1,9 @@
+﻿vlan_id;vlan_name;tenant;vrf;state;bdname;description;unicast_routing;bdgw;bdmask;appname;epgname;PhysDom
+100;FrontEnd;Apress_Prod;PROD;present;VL0100_BD;FrontEnd;yes;10.1.1.1;24;WebApp;VL0100_EPG;Apress_PhysDom
+200;BackEnd;Apress_Prod;PROD;present;VL0200_BD;BackEnd;yes;10.2.2.1;24;WebApp;VL0200_EPG;Apress_PhysDom
+300;Database;Apress_Prod;PROD;present;VL0300_BD;Database;yes;10.3.3.1;24;WebApp;VL0300_EPG;Apress_PhysDom
+400;Backup;Apress_Prod;PROD;present;VL0400_BD;Backup;yes;10.4.4.1;24;WebApp;VL0400_EPG;Apress_PhysDom
+150;FrontEnd;Apress_Dev;DEV;present;VL0150_BD;FrontEnd;yes;192.168.1.1;24;WebApp;VL0150_EPG;Apress_PhysDom
+250;BackEnd;Apress_Dev;DEV;present;VL0250_BD;BackEnd;yes;192.168.2.1;24;WebApp;VL0250_EPG;Apress_PhysDom
+350;Database;Apress_Dev;DEV;present;VL0350_BD;Database;yes;192.168.3.1;24;WebApp;VL0350_EPG;Apress_PhysDom
+450;Backup;Apress_Dev;DEV;present;VL0450_BD;Backup;yes;192.168.4.1;24;WebApp;VL0450_EPG;Apress_PhysDom

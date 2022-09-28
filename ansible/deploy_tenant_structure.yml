@@ -1,0 +1,13 @@
+- name: CREATE Tenants, VRFs and Application Profiles
+  hosts: aci
+  connection: local
+  gather_facts: false
+
+  tasks:
+  - name: Create Tenant structures
+    include_role: 
+      name: tenant_structure
+    loop: "{{ aci_config.aci_tenant_structure }}"
+    when: tenant_item.state == 'present'
+    loop_control:
+      loop_var: tenant_item

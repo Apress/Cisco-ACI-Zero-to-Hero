@@ -1,0 +1,26 @@
+- name: CREATE EPGs
+  hosts: aci
+  connection: local
+  gather_facts: false
+  
+  tasks:
+  - name: read data from CSV file {{ bd_epg_csv_filename }}
+    read_csv:
+      path: "{{ bd_epg_csv_filename }}"
+      delimiter: ';'
+    register: epg_set
+    
+  - name: Add a new EPG
+    cisco.aci.aci_epg:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      validate_certs: no
+      tenant: "{{ item.tenant }}"
+      ap: "{{ item.appname }}"
+      epg: "{{ item.epgname }}"
+      description: "{{ item.description }}"
+      bd: "{{ item.bdname }}"
+      state: "{{ item.state }}"
+    delegate_to: localhost
+    loop: "{{ epg_set.list }}"

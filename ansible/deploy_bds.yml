@@ -1,0 +1,39 @@
+- name: CREATE BDs
+  hosts: aci
+  connection: local
+  gather_facts: false
+  
+  tasks:
+  - name: Read data from CSV file {{ bd_epg_csv_filename }}
+    read_csv:
+      path: "{{ bd_epg_csv_filename }}"
+      delimiter: ';'
+    register: bd_set
+
+  - name: Add Bridge Domain
+    cisco.aci.aci_bd:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      validate_certs: no
+      tenant: "{{ item.tenant }}"
+      bd: "{{ item.bdname }}"
+      vrf: "{{ item.vrf }}"
+      enable_routing: "{{ item.unicast_routing }}"
+      state: "{{ item.state }}"
+    delegate_to: localhost
+    loop: "{{ bd_set.list }}"
+
+  - name: Create a subnet
+    cisco.aci.aci_bd_subnet:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      validate_certs: no
+      tenant: "{{ item.tenant }}"
+      bd: "{{ item.bdname }}"
+      gateway: "{{ item.bdgw }}"
+      mask: "{{ item.bdmask }}"
+      state: "{{ item.state }}"
+    delegate_to: localhost
+    loop: "{{ bd_set.list }}"

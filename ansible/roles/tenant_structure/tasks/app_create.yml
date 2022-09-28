@@ -1,0 +1,11 @@
+- name: Add a new AP
+  cisco.aci.aci_ap:
+    host: '{{ ansible_host }}'
+    username: '{{ username }}'
+    password: '{{ password }}'
+    tenant: '{{ tenant_item.name }}'
+    ap: '{{ item.name }}'
+    validate_certs: no
+    state: present
+  delegate_to: localhost
+  loop: "{{tenant_item.app_profile}}"

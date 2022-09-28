@@ -1,0 +1,16 @@
+- name: APIC Provisioning
+  hosts: aci
+  connection: local
+  gather_facts: false
+  
+  tasks:
+  - name: Add a new tenant
+    cisco.aci.aci_tenant:
+      host: '{{ ansible_host }}'
+      username: '{{ username }}'
+      password: '{{ password }}'
+      validate_certs: no
+      tenant: Apress_Ansible
+      description: Tenant created by Ansible
+      state: present
+    delegate_to: localhost
